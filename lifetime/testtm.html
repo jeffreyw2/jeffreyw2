@@ -1,1 +1,948 @@
+import sites from './sites'
+
+window.VECTORS_SITES = sites
+window.VECTORS_MEDIA = [{
+    id: 'section--ourimages',
+    component: 'section-base.section--article.area-width--full.pad-b--s.theme--frontenac',
+  props: {
+    style: {'paddingTop':'4em', overflowX: 'visible'}
+  },
+    styleContext: {
+      chroma: {type: 'black'},
+    },
+    subjects: [
+      {
+        component: 'layout-flickr.media-group',
+        props: {
+          targetRowHeight: 480,
+          showWidows: true,
+          containerPadding: 0,
+          boxSpacing: 32,
+          //containerWidth: 1080,
+          //fullWidthBreakoutRowCadence: 2,
+        },
+        subjects: [
+          {
+            component: 'media.motion-hoverable',
+            //content: '',
+            props: {
+              style:{width: 1440, height: 810},
+              videoSrc: 'https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/assets/Loop.1440x810.high.mp4',
+            }
+          },
+          {
+            component: 'media.motion-hoverable',
+            props: {
+              style:{width: 1440, height: 1801},
+              //imageSrc: 'https://imgflo.herokuapp.com/graph/851b8fd15e770b1/82a49954fb03232b677da68cb9b6b6e9/passthrough.jpg?input=https%3A%2F%2Fthe-grid-user-content.s3-us-west-2.amazonaws.com%2F411d9cfd-a95d-4157-91a0-524b840bf1d6.jpg&width=1440',
+              imageSrc: 'https://imgflo.herokuapp.com/graph/851b8fd15e770b1/1c151f00396fd85538afe83239c7c365/passthrough.jpg?input=https%3A%2F%2Fthe-grid-user-content.s3-us-west-2.amazonaws.com%2F55abc5f0-b31e-44bb-be54-361701c676f9.jpg&width=1440',
+            }
+          },
+          {
+            component: 'media.motion-hoverable',
+            props: {
+              style:{width: 1440, height: 502},
+              imageSrc: 'https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/assets/images/full-team-narrow-w1440.jpg',
+            },
+          },
+          {
+            component: 'media.motion-hoverable',
+            props: {
+              style:{width: 1440, height: 923},
+              imageSrc: 'https://imgflo.herokuapp.com/graph/851b8fd15e770b1/370f679c896e926124562017ea83d9d7/passthrough.jpg?input=https%3A%2F%2Fthe-grid-user-content.s3-us-west-2.amazonaws.com%2F8fb11765-80d9-4e7e-8c79-020d052d75e4.jpg&width=1440',
+            }
+          },
+          {
+            component: 'media.motion-hoverable',
+            props: {
+              style:{width: 499, height: 369},
+              imageSrc: 'http://doylez.com/img/noah-lowry.jpg',
+            }
+          },
+          {
+            component: 'media.motion-hoverable',
+            props: {
+              style:{width: 1000, height: 667},
+              imageSrc: 'https://static1.squarespace.com/static/521a5d8de4b02837fdc0eb19/53e673d9e4b0879d899b9678/53e673ebe4b0879d899b969a/1430111333772/michelle-patterson.jpg?format=1000w',
+            }
+          },
+          {
+            component: 'media.motion-hoverable',
+            props: {
+              style:{width: 1021, height: 575},
+              imageSrc: 'https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/assets/images/micah-16x9.png',
+            }
+          },
+
+        ],
+      },
+
+      //{
+      //  component: 'ActionGroup',
+      //  subjects: [
+      //    {
+      //      component: 'CTA',
+      //      props: {
+      //        label: `Check Availabity`,
+      //      },
+      //    },
+      //    {
+      //      component: 'CTA',
+      //      props: {
+      //        label: `See all photos`,
+      //      },
+      //    },
+      //  ]
+      //}
+    ],
+  }]
+
+var rootStyleContext = {
+  //colors: ['hsl(45, 100%, 39%)', ]
+  chroma: {
+    colors: [
+      '#29363b',
+      '#b69b72',
+      '#e4dace',
+      '#09121e',
+      '#ccbe99',
+    ],
+  },
+  // typography: {
+//     fonts: {
+//       'd': {
+//         style: {
+//           '-webkit-font-smoothing': 'antialiased',
+//           'font-family': '"Playfair Display", "TradeGothicNextLight", "Trade Gothic Next LT Pro Light"',
+//           'font-weight': '400 !important',
+//           //'font-style': 'normal !important',
+//           'letter-spacing': 0,
+//         },
+//       },
+//       'd2': {
+//         style: {
+//           '-webkit-font-smoothing': 'antialiased',
+//           'font-family': '"Playfair Display", "TradeGothicNextLight", "Trade Gothic Next LT Pro Light"',
+//           'font-weight': '400 !important',//'font-weight': '700 !important',
+//           'font-style': 'normal !important',
+//           'letter-spacing': '-0.03em',
+//         },
+//       },
+//       'd3': {
+//         style: {
+//           '-webkit-font-smoothing': 'antialiased',
+//           'font-family': '"Raleway", "TradeGothicNextLight", "Trade Gothic Next LT Pro Light"',
+//           'font-weight': '600 !important',//'font-weight': '700 !important',
+//           'font-style': 'normal !important',
+//           'letter-spacing': 0,
+//         },
+//       },
+//
+//
+//
+//       'txt': {
+//         style: {
+//           '-webkit-font-smoothing': 'antialiased',
+//           'font-family': '"Raleway", "GeorgiaProItalic", "Trade Gothic Next LT Pro Light"',
+//           'font-weight': '400 !important',
+//           'letter-spacing': 0,
+//         },
+//       },
+//
+//       'txt2': {
+//         style: {
+//           '-webkit-font-smoothing': 'antialiased',
+//           'font-family': ' -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif',
+//           'letter-spacing': 0,
+//         },
+//       },
+//
+//       'num': {
+//         style: {
+//           '-webkit-font-smoothing': 'antialiased',
+//           'font-family': '"Playfair Display", "TradeGothicNextLight", "Trade Gothic Next LT Pro Light"',
+//           'font-weight': '700 !important',
+//           'font-style': 'italic !important',
+//           'letter-spacing': 0,
+//         },
+//       },
+//     }
+//  }
+}
+
+var handleCTALifeTimeClick = function() {
+  var query = window.location.search.replace("?", '')
+  window.open('https://goo.gl/forms/dX6PtGgk0V7cPBcb2', '_blank')
+}
+window.handleCTALifeTimeClick = handleCTALifeTimeClick
+
+var handleDemoCTA = function() {
+  window.open('https://thegrid.io/', '_blank')
+}
+
+var header = {
+  id: 'page-header',
+  component: 'Header.bg--dark-chroma-map.style--fairmont',
+  //.bg--dark-chroma-map.bg--dark-overlay
+  styleContext: {
+    chroma: {type: 'dark', typeIndex: 0},
+  },
+  subjects: {
+    'background': {
+      component: 'media.layout--bg-fill',
+      //content: '',
+      props: {
+        videoSrc: 'https://vimeo.com/214316004',
+      }
+    },
+    //'graphic':
+    'message': [
+      //{
+      //  component: 'ornament',
+      //  props: {
+      //    children: 'grid-lifetime-logo',
+      //  },
+      //},
+
+      // {
+      //   component: 'sub-title',
+      //   props: {
+      //     children: `This is an exclusive invitation to our most active users to`,
+      //     // to celebrate our leap in evolution, we're offering founding members Lifetime Membership for $96
+      //   },
+      // },
+      // {
+      //   component: 'title.fnt-sz--d-l',
+      //   props: {
+      //     children: `v3 changes everything`,
+      //   },
+      // },
+      //
+      {
+       component: 'title.fnt-sz--d-l',
+       props: {
+         style: {'marginBottom': '.5em'},
+         children: `Welcome to the Grid family` ,
+       },
+      },
+      {
+       component: 'sub-title',
+       props: {
+         children: `May your 10 websites be forever prosperous & beautiful`,
+
+         // to celebrate our leap in evolution, we're offering founding members Lifetime Membership for $96
+       },
+      }
+    ],
+    // 'pricing': {
+//       component: 'detail',
+//       props: {
+//         type: 'price',
+//         value: `$695`,
+//         label: 'starting at',
+//       },
+//     },
+    'actions': [
+      {
+        component: 'cta',
+        props: {
+          label: `Get started now`,
+          onClick: handleDemoCTA,
+        },
+      },
+      {
+        component: 'cta',
+        props: {
+          label: `Invite friends`,
+          onClick: handleCTALifeTimeClick,
+        },
+      },
+    ],
+    // 'featuredDetails': [
+//       {
+//         component: 'detail',
+//         props: {
+//           type: 'rating-stars',
+//           value: 5,
+//           label: 'Forbes Travel Guide',
+//         },
+//       },
+//       {
+//         component: 'detail',
+//         props: {
+//           type: 'award',
+//           value: `Top Choice`,
+//           label: `Fodor's`,
+//         },
+//       },
+//       {
+//         component: 'detail',
+//         props: {
+//           type: 'rating-stars',
+//           value: 5,
+//           label: 'Gayot',
+//         },
+//       },
+//       {
+//         component: 'detail',
+//         props: {
+//           type: 'rating',
+//           value: `91.5`,
+//           label: 'Condé Nast Traveler',
+//         },
+//       },
+//       {
+//         component: 'detail',
+//         props: {
+//           type: 'rating',
+//           value: `5.0`,
+//           label: 'Oyster.com',
+//         },
+//       },
+//     ]
+  }
+}
+
+
+
+var sections = [
+  //Object.assign({},header,{id: 'header-fairmont-test', component: 'Header.bg--dark-overlay.style--fairmont'}),
+
+  {
+    id: 'section--intro',
+    component: 'section-base.section--article.area-width--full.pad-b--s.theme--frontenac',
+    styleContext: {
+      chroma: {type: 'light', typeIndex: 0},
+    },
+    context: {
+      component: 'text-group',
+      subjects: [
+        {
+          component: 'title',
+          props: {
+            children: `Websites suck less with friends`,
+          },
+        },
+        {
+          component: 'sub-title',
+          props: {
+            children: `Sharing is caring`,
+          },
+        },
+        {
+          component: 'text.chroma--text-cycle',
+          props: {
+            children: `Websites on the Grid are collaborative. Mind-meld with your team to get a site like this up lickety-split. Don't be selfish, invite your peeps to reap the fruits of this once-in-a-lifetime offer.`
+          },
+        },
+        {
+                component: 'ActionGroup',
+                subjects: [
+                  {
+                    component: 'CTA',
+                    props: {
+                      style: {marginTop: '2em'},
+                      label: `Share this insane offer now`,
+                      onClick: handleCTALifeTimeClick,
+                    },
+                  },
+                ]
+              }
+      ],
+    },
+    //subjects: [
+    //  {
+    //    component: 'text-group',
+    //    subjects: [
+    //      // {
+    //      //   component: 'h3',
+    //      //   props: {
+    //      //     children: 'Ameninities',
+    //      //   },
+    //      // },
+    //      {
+    //        component: 'list',
+    //        subjects: [
+    //          {
+    //            component: 'text', props: { children: 'Paid Wi-Fi' },
+    //          },
+    //          {
+    //            component: 'text', props: { children: 'Paid parking' },
+    //          },
+    //          {
+    //            component: 'text', props: { children: 'Pool' },
+    //          },
+    //          {
+    //            component: 'text', props: { children: 'Laundry service' },
+    //          },
+    //          {
+    //            component: 'text', props: { children: 'Restaurant' },
+    //          },
+    //          {
+    //            component: 'text', props: { children: 'Kitchen in all rooms' },
+    //          },
+    //          {
+    //            component: 'text', props: { children: 'Bar' },
+    //          },
+    //        ]
+    //      },
+    //    ],
+    //  },
+    //],
+  },
+
+
+  // {
+ //    id: 'section--team-pic',
+ //    component: 'section-base.theme--frontenac.no-typography',
+ //    styleContext: {
+ //      chroma: {type: 'dark'},
+ //    },
+ //    style: { height: `calc(100vw * ${502/1440})`},
+ //    subjects: [
+ //      {
+ //        component: 'media.layout--bg-fill',
+ //        props: {
+ //          imageSrc: 'https://drive.google.com/uc?id=0BzkOIwPhC03KTndmUmZackxaZTg',
+ //          style: { height: `calc(100vw * ${502/1440})`}
+ //
+ //        },
+ //      },
+ //    ],
+ //
+ //  },
+
+  // {
+//     component: 'title',
+//     props: {
+//       children: `Let me know about the Grid sites you create and how this helps you build your network and achieve your goals.`,
+//     },
+//   },
+
+
+  // {
+//       id: 'section--webuilt',
+//       component: 'section-base.section--cards.theme--mandarin',
+//       styleContext: {
+//         chroma: {type: 'dark', typeIndex: 0},
+//       },
+//       context: {
+//         component: 'text-group',
+//         subjects: [
+//
+//           {
+//             component: 'title',
+//             props: {
+//               //children: `This is not a walled-garden-variety network, this is a grid of inside-out connection-machines. Follow, join, collaborate, buy, sell or relax in the comfort of a newsfeed that brings all to you.`,
+//               //children: `This is not a walled-garden-variety network, this is your space for free & beautiful connection. Follow, join, collaborate, buy, sell or relax in the comfort of a newsfeed that brings all to you.`,
+//               children: `So much more than before<br />& so much less, too`
+//             },
+//           },
+//           {
+//             component: 'sub-title',
+//             props: {
+//               children: 'the Grid v3',
+//             },
+//           },
+//         ],
+//       },
+//       subjects: [
+//         {
+//           component: 'media.filter--gmap.layout--bg-fill',
+//           props: {
+//             imageSrc: 'https://imgflo.herokuapp.com/graph/851b8fd15e770b1/370f679c896e926124562017ea83d9d7/passthrough.jpg?input=https%3A%2F%2Fthe-grid-user-content.s3-us-west-2.amazonaws.com%2F8fb11765-80d9-4e7e-8c79-020d052d75e4.jpg&width=1440',
+//           }
+//         },
+//         {
+//           component: 'card.style--silk.w--1of3',
+//           props: {
+//             title: 'Redesign in real-time with more control',
+//             description: `No more waiting for redesigns. Tweak your site colors, typography & layout in real-time. Flex your new creative powers with more fine-grain influence on how design decisions percolate from site-wide to each section. Molly has evolved from independent agent to helpful assistant.`,
+//           },
+//         },
+//         {
+//           component: 'card.style--silk.w--1of3',
+//           props: {
+//             title: 'Lockdown per-section designs & help Molly learn',
+//             description: `One of our most frequent feature requests is finally in sight. Like how a section looks but want to adjust the rest of the site's aesthetic? No prob, with v3 not only can you lockdown section designs, doing so sends strong training signals to Molly, helping her make better future decisions.`,
+//           },
+//         },
+//         {
+//           component: 'card.style--silk.w--1of',
+//           props: {
+//             title: 'On-site app, the website is the app',
+//             description: 'The chasm between the app & your sites was a source of confusion & frustration for many. We found many first-time users instinctively assumed the app was the website, & it often looked better, eek. So, we rebuilt the app experience directly into your site.',
+//           },
+//         },
+//         // {
+// //           component: 'card.style--silk',
+// //           props: {
+// //             title: 'for connecting',
+// //             description: `This is not a walled-garden-variety network, this is a network of inside-out connection-machines that intimately connect those within to those on the Network. Follow, join, collaborate, buy, sell & let the message massage in the comfort of a newsfeed that brings all to you.`,
+// //             //description: 'Sites on the Grid talk to each other to help you find people and communities with whom you can prosper.',
+// //           },
+// //         },
+//
+//   //than Our engineers left a piece of their souls in the new platform, brining the average solve time down from 30s to 500ms
+//         // {
+//         //   component: 'card.style--silk',
+//         //   props: {
+//         //     title: 'New content paradigm',
+//         //     //description: ``,
+//         //     description: '',
+//         //   },
+//         // },
+//         //{
+//         //  component: 'card.style--silk',
+//         //  props: {
+//         //    title: 'New content paradigm',
+//         //    //description: ``,
+//         //    description: '',
+//         //  },
+//         //},
+//         {
+//           component: 'card.style--silk.w--2of3',
+//           props: {
+//             title: 'Social + commerce + all the goods',
+//             description: `With a butter smooth User Experience atop rock solid tech, v3 will be our launching pad for commerce, the newsfeed, the ability to follow websites & much more.`,
+//           },
+//         },
+//         //{
+//         //  component: 'card.style--silk',
+//         //  props: {
+//         //    title: 'Dramatic improvements in performance & stability',
+//         //    description: `We set a new bar for performance of our sites & the on-site app. Google speed scores for v3 sites are up from 50-70% to 95-100%. Crash rates for beta tests of v3 are 1/100th of v2.`,
+//         //  },
+//         //},
+//
+//         {
+//           component: 'ActionGroup',
+//           props: {style:{marginTop: '2em'}},
+//           subjects: [
+//             {
+//               component: 'CTA',
+//               props: {
+//                 label: `Be one of the first to try v3`,
+//                 onClick: handleDemoCTA,
+//               },
+//             },
+//           ]
+//         }
+//
+//       ],
+//     },
+
+
+    // {
+//       id: 'section--review-a23423',
+//       component: 'SectionDual.theme--mandarin.style--thin-centered',
+//       styleContext: {
+//         chroma: {type: 'vibrant'},
+//       },
+//       context: {
+//         component: 'text-group',
+//         subjects: [
+//           {
+//             component: 'text',
+//             props: {
+//               children: `"V3 is the game-changer that lives up to the hype, finally, finally!"`,
+//             },
+//           },
+//           {
+//             component: 'text',
+//             props: {
+//               children: `Noah Lowry`,
+//             },
+//           },
+//           {
+//             component: 'detail',
+//             props: {
+//               type: 'award',
+//               value: `Lifetime Member, Famed SF Giants Pitcher, co-founder of the Institute For Heroic Living, Blood & Ethos`,
+//             },
+//           },
+//
+//         ],
+//       },
+//       subjects: [
+//         {
+//           component: 'media.layout--bg-fill',
+//           props: {
+//             imageSrc: 'http://doylez.com/img/noah-lowry.jpg',
+//           }
+//         },
+//       ],
+//     },
+//     {
+//       id: 'section--review-feature-forbes',
+//       component: 'SectionDual.theme--mandarin.style--thin-centered.order--subject-first',
+//       styleContext: {
+//         chroma: {type: 'light', typeIndex: 1},
+//       },
+//       context: {
+//         component: 'text-group',
+//         subjects: [
+//           {
+//             component: 'text',
+//             props: {
+//               children: `"The technology is as deep as the vision is audacious, this is the next big thing."`,
+//             },
+//           },
+//           {
+//             component: 'text',
+//             props: {
+//               children: `Michelle Patterson`,
+//             },
+//           },
+//           {
+//             component: 'detail',
+//             props: {
+//               type: 'award',
+//               value: `Lifetime Member, CEO of Women Network, giving 300M women globally a voice to share their message`,
+//             },
+//           },
+//
+//         ],
+//       },
+//       subjects: [
+//         {
+//           component: 'media.layout--bg-fill',
+//           props: {
+//             imageSrc: 'https://static1.squarespace.com/static/521a5d8de4b02837fdc0eb19/53e673d9e4b0879d899b9678/53e673ebe4b0879d899b969a/1430111333772/michelle-patterson.jpg?format=1000w',
+//           }
+//         },
+//       ],
+//     },
+//     {
+//       id: 'section--review-feature-fodors',
+//       component: 'SectionDual.theme--mandarin.style--thin-centered',
+//       styleContext: {
+//         chroma: {type: 'dark', typeIndex: 1},
+//       },
+//       context: {
+//         component: 'text-group',
+//         subjects: [
+//           {
+//             component: 'text',
+//             props: {
+//               children: `"The Grid v3 looks & feels so good I might quit the Internet until it’s out"`,
+//             },
+//           },
+//           {
+//             component: 'text',
+//             props: {
+//               children: `Micah Wirth`,
+//             },
+//           },
+//           {
+//             component: 'detail',
+//             props: {
+//               type: 'award',
+//               value: `Lifetime Member, winemaker & founder of Joseph Jewell Wines, Wine & Spirits' ZINFANDEL OF THE YEAR`,
+//             },
+//           },
+//
+//         ],
+//       },
+//       subjects: [
+//         {
+//           component: 'media.layout--bg-fill',
+//           props: {
+//             imageSrc: 'https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/assets/images/micah-16x9.png',
+//           }
+//         },
+//       ],
+//     },
+
+    //{
+    //  id: 'section--cards-0',
+    //  component: 'section-base.section--cards.theme--mandarin',
+    //  styleContext: {
+    //    chroma: {type: 'light'},
+    //  },
+    //  context: {
+    //    component: 'text-group',
+    //    subjects: [
+    //      {
+    //        component: 'title',
+    //        props: {
+    //          children: `What other members are saying`,
+    //        },
+    //      },
+    //      //{
+    //      //  component: 'text',
+    //      //  props: {
+    //      //    children: 'Travellers with a taste for chic & modern spaces will find themselves pleasantly at home.',
+    //      //  },
+    //      //},
+    //    ],
+    //  },
+    //  subjects: [
+    //    {
+    //      component: 'card.style--quotable-row',
+    //      props: {
+    //        imageSrc: 'http://doylez.com/img/noah-lowry.jpg',
+    //        //logoSrc: 'https://tripexpert.s3.amazonaws.com/publications/icons/retina/4.png?1400267449',
+    //        title: 'Noah Lowry',
+    //        description: 'V3 is the game-changer that lives up to the hype, finally, finally!',
+    //        meta: 'Lifetime Member, Famed SF Giants Pitcher, co-founder of the Institute For Heroic Living, Blood & Ethos',
+    //        url: 'http://andersonpaak.audio/',
+    //        urlDisplay: 'andersonpaak.audio',
+    //        //ribbon: 'VIP',
+    //      },
+    //    },
+    //    {
+    //      component: 'card.style--descript.w--1of2',
+    //      props: {
+    //        imageSrc: 'https://static1.squarespace.com/static/521a5d8de4b02837fdc0eb19/53e673d9e4b0879d899b9678/53e673ebe4b0879d899b969a/1430111333772/michelle-patterson.jpg?format=1000w',
+    //        // videoSrc: 'https://www.youtube.com/watch?v=kAod29lF0nM',
+    //        //logoSrc: 'https://tripexpert.s3.amazonaws.com/publications/icons/retina/8.png?1436546792',
+    //        title: 'Michelle Patterson',
+    //        description: 'The technology is as deep as the vision is audacious.',
+    //        meta: 'Lifetime Member, CEO of Women Network, giving 300M women globally a voice to share their message',
+    //        url: 'https://womennetwork.com/about/our-founder/',
+    //        urlDisplay: 'thegrid.ai/wafia',
+    //      },
+    //    },
+    //    {
+    //      component: 'card.style--descript.w--1of2',
+    //      props: {
+    //        title: 'Micah Wirth',
+    //        imageSrc: 'https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/assets/images/micah-16x9.png',
+    //        description: `The Grid v3 looks so good I might quit the Internet until it’s out`,
+    //        meta: `Lifetime Member, winemaker & founder of Joseph Jewell Wines, Wine & Spirits' ZINFANDEL OF THE YEAR`,
+    //        url: 'https://thegrid.ai/jjwines/',
+    //        urlDisplay: 'thegrid.ai/jjwines',
+    //      },
+    //    },
+    //
+    //    {
+    //      component: 'ActionGroup',
+    //      subjects: [
+    //        {
+    //          component: 'CTA',
+    //          props: {
+    //            label: `Demo v3`,
+    //          },
+    //        },
+    //        {
+    //          component: 'CTA',
+    //          props: {
+    //            label: `Become Lifetime Member`,
+    //          },
+    //        },
+    //      ]
+    //    }
+    //  ],
+    //},
+
+
+  // {
+//     id: 'section--vip-membership',
+//     component: 'section-base.layout--odd-ball-list.theme--frontenac',
+//     styleContext: {
+//       chroma: {type: 'white', typeIndex: 0},
+//     },
+//     context: {
+//       component: 'text-group',
+//       subjects: [
+//         {
+//           component: 'site-logo',
+//           props: {
+//             className: 'graphic',
+//           },
+//         },
+//         //{
+//         //  component: 'site-logo',
+//         //  props: {
+//         //    className: 'graphic',
+//         //  },
+//         //},
+//         {
+//           component: 'title',
+//           props: {
+//             children: 'Lifetime Membership Perks',
+//           },
+//         },
+//       ],
+//     },
+//
+//     subjects: [
+//       {
+//         component: 'h3',
+//         props: {
+//           children: 'Exclusive access to monthly webinar with the CEO & CTO',
+//         },
+//       },
+//       {
+//         component: 'text',
+//         props: {
+//           children: 'Personally engage with our executive team & other lifetime members to help shape the next stages of our evolution. The monthly webinar will be an open format where the latest developments will be shared & discussed.',
+//         },
+//       },
+//       {
+//         component: 'h3',
+//         props: {
+//           children: '10 sites with all the bells-&-whistles',
+//         },
+//       },
+//       {
+//         component: 'text',
+//         props: {
+//           children: 'Two handfuls of sites for all your web publishing needs. No upgrade or renewal fees ever again even as we roll out new features for commerce, video & community-building.',
+//         },
+//       },
+//
+//       //{
+//       //  component: 'h3',
+//       //  props: {
+//       //    children: 'First-in-line to demo new versions & try new features',
+//       //  },
+//       //},
+//       //{
+//       //  component: 'text',
+//       //  props: {
+//       //    children: 'The first 100 VIPs invited to join the Grid are true luminaries, each well known and respected. They will be responsible for selecting additional VIPs. We project each VIP to extend 6 new VIP invitations per year to people who stand out in their field.',
+//       //  },
+//       //},
+//       {
+//         component: 'h3',
+//         props: {
+//           children: 'Submit one of your sites to be showcased on thegrid.io',
+//         },
+//       },
+//       {
+//         component: 'text',
+//         props: {
+//           children: `Within the first week of launch, with all the quality incoming links from articles on NYTimes, Forbes, FastCompany, Wired, TechCrunch, and so on, our website shot to #1 for Google searches including "the grid" & "thegrid". We're paying it forward with backlinks to all our lifetime members. For each showcased site we'll include a cover photo, a logo or avatar, title, and short description.`,
+//         },
+//       },
+//     ]
+//   },
+
+
+  // {
+//     id: 'section--because-it',
+//     component: 'section-base.layout--h-text-stack',
+//     styleContext: {
+//       chroma: {type: 'vibrant', typeIndex: 0},
+//     },
+//     subjects: [
+//       {
+//         component: 'text',
+//         props: {
+//           children: 'Because it’s about us. True happiness is reached when we are engaged in a prospering community, growing together and inspiring others to join us.',
+//         },
+//       },
+//       {
+//         component: 'text',
+//         props: {
+//           children: 'Because we are all connected. A simple butterfly wing flapping in the Atlantic can cause a hurricane in the Pacific.',
+//         },
+//       },
+//       {
+//         component: 'text',
+//         props: {
+//           children: 'Because we can. We have at our disposal one the greatest inventions of humankind, the Internet. Transcending all frontiers, empowering us to connect and prosper at a global scale.',
+//         },
+//       },
+//     ]
+//   },
+
+
+  // {
+//     id: 'section--vip-reqs',
+//     component: 'section-base.layout--odd-ball-list.theme--frontenac',
+//     props: {
+//       className: '',
+//     },
+//     styleContext: {
+//       chroma: {type: 'dark', typeIndex: 1},
+//     },
+//     context: {
+//       component: 'text-group',
+//       subjects: [
+//         {
+//           component: 'site-logo',
+//           props: {
+//             className: 'graphic',
+//           },
+//         },
+//         {
+//           component: 'title',
+//           props: {
+//             children: 'Become Lifetime Member',
+//           },
+//         },
+//         {
+//           component: 'sub-title',
+//           props: {
+//             children: 'Forever for the price of 1 year',
+//           },
+//         },
+//         {
+//           component: 'text',
+//           props: {
+//             children: 'Did you know 60,000 people pre-paid $96 for a founding membership for one year on the Grid?',
+//           },
+//         },
+//         {
+//           component: 'text',
+//           props: {
+//             children: `This offering was created for you, the select few, the dedicated and faithful, a Lifetime Membership for a one time payment of $144. Not only will you never have to worry about a renewal notice but you’ll personally ensure a ripe long life to make beautiful bits of prosperity with the first creative AI of it's kind. And think, she's only a baby, wait till she starts talking :)`,
+//           },
+//         },
+//       ],
+//     },
+//     subjects: [
+//       {
+//         component: 'media.filter--gmap.layout--bg-fill',
+//         props: {
+//           //imageSrc: 'https://imgflo.herokuapp.com/graph/851b8fd15e770b1/82a49954fb03232b677da68cb9b6b6e9/passthrough.jpg?input=https%3A%2F%2Fthe-grid-user-content.s3-us-west-2.amazonaws.com%2F411d9cfd-a95d-4157-91a0-524b840bf1d6.jpg&width=1440',
+//           imageSrc: 'https://imgflo.herokuapp.com/graph/851b8fd15e770b1/1c151f00396fd85538afe83239c7c365/passthrough.jpg?input=https%3A%2F%2Fthe-grid-user-content.s3-us-west-2.amazonaws.com%2F55abc5f0-b31e-44bb-be54-361701c676f9.jpg&width=1440',
+//         }
+//       },
+//       {
+//         component: 'ActionGroup',
+//         subjects: [
+//           {
+//             component: 'CTA',
+//             props: {
+//               label: `Do it, it's only forever`,
+//               onClick: handleCTALifeTimeClick,
+//             },
+//           },
+//         ]
+//       }
+//     ]
+//   },
+
+]
+
+
+window.VECTORS = [
+  {
+    id: 'site',
+    component: 'Site',
+
+    props: {
+      key: 'site',
+      styleverse: {styleContext: rootStyleContext},
+      data: {
+        config: {
+          logo: 'https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/assets/brand/logo-144x90-black-stroke.svg',
+        }
+      }
+    },
+    context: {
+      id: 'section-layout',
+      component: 'SectionLayout',
+      context: header,
+      subjects: sections,
+    }
+  }
+
+]
+window.ROOT_STYLE_CONTEXT = rootStyleContext
+export default window.VECTORS
 
